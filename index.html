@@ -1,0 +1,102 @@
+<!-- index.html -->
+<!doctype html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.js">
+
+    </script>
+  </head>
+  <body>
+    <div id="FirstVue">
+      <p>
+      {{message}}
+      </p>
+      <p>
+      --------
+      </p>
+      <p>
+      {{changeValue}}
+      </p>
+      <input v-model="changeValue"/>
+
+      <p>
+      --------
+      </p>
+
+      <ul>
+        <li v-for="todo in todos">
+          <p>
+          {{todo.text}}
+          </p>
+        </li>
+      </ul>
+      <p>
+      --------
+      </p>
+      <div>
+        <p>
+        {{message}}
+        </p>
+        <button v-on:click="reverseMessage">
+        反向排列
+        </button>
+      </div>
+      <p>
+      --------
+      </p>
+      <div>
+        <p>
+        添加todo
+        </p>
+        <input v-model="newTodo" v-on:keyup.enter="addNewTodo"/>
+        <ul>
+        <li v-for="todo in todoList">
+          <span>
+          {{todo.text}}
+          </span>
+          <button v-on:click="removeTodo($index)">
+          X
+          </button>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+    var vm = new Vue({
+      el:"#FirstVue",
+      data:{
+        message: "开始我的 Vue.js 学习之旅.",
+        changeValue: "改变此处,观察现象。",
+        todos: [
+          {text: "HTML"},
+          {text: "CSS"},
+          {text: "JavaScript"},
+          {text: "JQuery"},
+        ],
+        todoList: [
+          {text: 'One'},
+        ],
+      },
+      methods:{
+        reverseMessage: function(){
+          this.message = this.message.split('').reverse().join('')
+        },
+        addNewTodo: function(){
+          var text = this.newTodo.trim();
+          if (text) {
+            this.todoList.push({text: text});
+            this.newTodo = '';
+          }
+        },
+        removeTodo: function(index) {
+          this.todoList.slice(index, 1);
+        }
+      }
+      });
+    </script>
+  </body>
+</html>
