@@ -10,6 +10,7 @@
     </script>
   </head>
   <body>
+    <!--
     <div id="FirstVue">
       <p>
       {{message}}
@@ -64,39 +65,70 @@
         </ul>
       </div>
     </div>
+    -->
+    <div id="Example_002">
+      <p>{{title}}</p>
+      <span>Message: {{message}}</span>
+      <br />
+      <!-- <span>This will never change: {{* MSG }}</span> -->
+      <input v-model="message" />
+      <br />
+      <!-- <div>{{{ html }}}</div> -->
+      <span>{{ number+1 }}</span>
+      <br />
+      <span>{{ ok ? "YES" : "NO" }}</span>
+      <br />
+      <span>Message: {{message|capitalize}}</span>
+    </div>
 
     <script>
-    var vm = new Vue({
-      el:"#FirstVue",
-      data:{
-        message: "开始我的 Vue.js 学习之旅.",
-        changeValue: "改变此处,观察现象。",
-        todos: [
-          {text: "HTML"},
-          {text: "CSS"},
-          {text: "JavaScript"},
-          {text: "JQuery"},
-        ],
-        todoList: [
-          {text: 'One'},
-        ],
+    var vm_002 = new Vue({
+      el: "#Example_002",
+      data: {
+        title: "我的第二个例子.",
+        message: "Example 002",
+        // MSG: "不可变",
+        html: "<span>插入HTML代码</span>",
+        number: 3,
+        ok: true,
       },
-      methods:{
-        reverseMessage: function(){
-          this.message = this.message.split('').reverse().join('')
-        },
-        addNewTodo: function(){
-          var text = this.newTodo.trim();
-          if (text) {
-            this.todoList.push({text: text});
-            this.newTodo = '';
-          }
-        },
-        removeTodo: function(index) {
-          this.todoList.slice(index, 1);
-        }
-      }
-      });
+    });
+    // var vm = new Vue({
+    //   el:"#FirstVue",
+    //   data:{
+    //     message: "开始我的 Vue.js 学习之旅.",
+    //     changeValue: "改变此处,观察现象。",
+    //     todos: [
+    //       {text: "HTML"},
+    //       {text: "CSS"},
+    //       {text: "JavaScript"},
+    //       {text: "JQuery"},
+    //     ],
+    //     todoList: [
+    //       {text: 'One'},
+    //     ],
+    //   },
+    //   methods:{
+    //     reverseMessage: function(){
+    //       this.message = this.message.split('').reverse().join('')
+    //     },
+    //     addNewTodo: function(){
+    //       var text = this.newTodo.trim();
+    //       if (text) {
+    //         this.todoList.push({text: text});
+    //         this.newTodo = '';
+    //       }
+    //     },
+    //     removeTodo: function(index) {
+    //       this.todoList.slice(index, 1);
+    //     }
+    //   }
+    //   });
+    //   // KVO
+    //   vm.$watch('changeValue', (newValue, oldValue)=>{
+    //     console.log(newValue+'代替'+oldValue)
+    //   });
+
     </script>
   </body>
 </html>
